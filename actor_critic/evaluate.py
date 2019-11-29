@@ -7,7 +7,7 @@ from actor_critic.environment_wrapper import EnvironmentWrapper
 
 def evaluate_actor_critic(params, path):
     model = ActorCritic(params.stack_size, get_action_space())
-    model.load_state_dict(torch.load(path))
+    model.load_state_dict(torch.load(path, lambda storage, loc: storage))
     model.eval()
 
     env = gym.make('CarRacing-v0')

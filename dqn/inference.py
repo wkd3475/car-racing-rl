@@ -7,7 +7,7 @@ from dqn.environment_wrapper import EnvironmentWrapper
 
 def dqn_inference(path):
     model = DQN(input_shape=1, num_of_actions=get_action_space())
-    model.load_state_dict(torch.load(path))
+    model.load_state_dict(torch.load(path, lambda storage, loc: storage))
     model.eval()
 
     env = gym.make('CarRacing-v0')
